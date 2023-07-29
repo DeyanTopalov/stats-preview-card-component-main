@@ -1,67 +1,3 @@
-/* Reset by Joshua Comeau
-  https://www.joshwcomeau.com/css/custom-css-reset/
-  1. Use a more-intuitive box-sizing model.
-*/
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-/*
-  2. Remove default margin
-*/
-* {
-  margin: 0;
-}
-/*
-  Typographic tweaks!
-  3. Add accessible line-height
-  4. Improve text rendering
-*/
-body {
-  line-height: 1.5;
-  -webkit-font-smoothing: antialiased;
-}
-/*
-  5. Improve media defaults
-*/
-img,
-picture,
-video,
-canvas,
-svg {
-  display: block;
-  max-width: 100%;
-}
-/*
-  6. Remove built-in form typography styles
-*/
-input,
-button,
-textarea,
-select {
-  font: inherit;
-}
-/*
-  7. Avoid text overflows
-*/
-p,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  overflow-wrap: break-word;
-}
-/*
-  8. Create a root stacking context
-*/
-#root,
-#__next {
-  isolation: isolate;
-}
-
 :root {
   /* Primary clrs */
   --clr-bg-main: hsl(233, 47%, 7%);
@@ -70,7 +6,7 @@ h6 {
 
   /* Secondary clrs */
   --clr-white-main: hsl(0, 0%, 100%); /* main heading, stats */
-  --clr-white-transp-s: hsla(0, 0%, 100%, 0.75);
+  --clr-white-transp-s: hsla(0, 0%, 100%, 0.75); /* main paragraph) */
   --clr-white-transp-m: hsla(0, 0%, 100%, 0.6);
 
   --fs-small: 0.75rem;
@@ -87,6 +23,10 @@ h6 {
   --spacing-l: 1.5rem;
   --spacing-xl: 2rem;
 
+  --card-max-width-mobile: 28rem;
+  --card-width-tablet: 34.5rem;
+  --card-max-width-desktop: 69.375rem;
+
   /* Desktop */
   /* spacing on text to card border & text to stats 4.5rem or 5.3125rem? */
   /* spacing text to img 5.9375rem */
@@ -95,8 +35,113 @@ h6 {
   /* Desktop img max width 540px */
 
   /* border radius 0,5rem */
+
+  /* Mobile */
+  /* max-width: 20.5rem; */
+  /* body padding sides  31.5px ~2rem */
 }
 
 /* Global Styles */
+body {
+  display: grid;
+  place-content: center;
+  min-height: 100vh;
+  background-color: var(--clr-bg-main);
+  padding: var(--spacing-l);
+  font-family: var(--ff-main);
+  font-weight: var(--fw-regular);
+  font-size: var(--fs-regular);
+  color: var(--clr-white-transp-s);
+}
 
 /* Card Styles */
+.card {
+  max-width: var(--card-max-width-mobile);
+  background-color: var(--clr-bg-card);
+  border-radius: var(--spacing-s);
+  overflow: hidden;
+  display: grid;
+  grid-template-areas:
+    "picture"
+    "body";
+}
+
+.card__body {
+  grid-area: body;
+  display: grid;
+  gap: 1rem;
+  text-align: center;
+  padding: var(--spacing-xl);
+}
+
+.picture {
+  grid-area: picture;
+  position: relative;
+  background-color: var(--clr-violet);
+}
+
+.img {
+  mix-blend-mode: multiply;
+  opacity: 0.75;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.card_body_heading {
+  color: var(--clr-white-main);
+  font-size: 1.75rem;
+  line-height: 2rem;
+  font-weight: var(--fw-bold);
+}
+
+.heading_span {
+  color: var(--clr-violet);
+}
+
+.card_body_description {
+}
+
+.card_body_stats {
+  font-family: var(--ff-stats);
+  font-size: var(--fs-small);
+  text-transform: uppercase;
+  letter-spacing: 0.0625rem; /* 1px */
+  padding-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-content: space-between;
+  gap: var(--spacing-l);
+  @media (min-width: 500px) {
+    flex-direction: row;
+  }
+}
+
+.stats_span {
+  color: var(--clr-white-main);
+  font-family: var(--ff-main);
+  font-size: 1.5rem;
+  font-weight: var(--fw-bold);
+  text-transform: none;
+}
+
+@media (min-width: 56.25rem) {
+  .card {
+    max-width: var(--card-max-width-desktop);
+    grid-template-columns: 1fr 0.9fr;
+    grid-template-areas: "body picture";
+  }
+  .card__body {
+    padding: 4.5rem;
+    padding-right: 8rem;
+    text-align: left;
+  }
+  .card_body_heading {
+    font-size: 2.25rem;
+    line-height: 2.75rem;
+  }
+  .card_body_stats {
+    padding-top: 3.5rem;
+  }
+}
