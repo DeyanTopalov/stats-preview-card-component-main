@@ -6,11 +6,13 @@
 
   /* Secondary clrs */
   --clr-white-main: hsl(0, 0%, 100%); /* main heading, stats */
-  --clr-white-transp-s: hsla(0, 0%, 100%, 0.75); /* main paragraph) */
-  --clr-white-transp-m: hsla(0, 0%, 100%, 0.6);
+  --clr-white-transp-s: hsla(0, 0%, 100%, 0.75); /* main paragraph */
+  --clr-white-transp-m: hsla(0, 0%, 100%, 0.6); /* stats label */
 
   --fs-small: 0.75rem;
   --fs-regular: 0.9375rem;
+  --fs-large: 1.5rem;
+  --fs-xl: 1.75rem;
 
   --ff-main: "Inter", sans-serif;
   --ff-stats: "Lexend Deca", sans-serif;
@@ -24,21 +26,7 @@
   --spacing-xl: 2rem;
 
   --card-max-width-mobile: 28rem;
-  --card-width-tablet: 34.5rem;
   --card-max-width-desktop: 69.375rem;
-
-  /* Desktop */
-  /* spacing on text to card border & text to stats 4.5rem or 5.3125rem? */
-  /* spacing text to img 5.9375rem */
-  /* spacing text to heading 1.5625rem */
-  /* Desptop card max width 1100px */
-  /* Desktop img max width 540px */
-
-  /* border radius 0,5rem */
-
-  /* Mobile */
-  /* max-width: 20.5rem; */
-  /* body padding sides  31.5px ~2rem */
 }
 
 /* Global Styles */
@@ -69,14 +57,13 @@ body {
 .card__body {
   grid-area: body;
   display: grid;
-  gap: 1rem;
+  gap: var(--spacing-m);
   text-align: center;
   padding: var(--spacing-xl);
 }
 
 .picture {
   grid-area: picture;
-  position: relative;
   background-color: var(--clr-violet);
 }
 
@@ -90,7 +77,7 @@ body {
 
 .card_body_heading {
   color: var(--clr-white-main);
-  font-size: 1.75rem;
+  font-size: var(--fs-xl);
   line-height: 2rem;
   font-weight: var(--fw-bold);
 }
@@ -99,15 +86,13 @@ body {
   color: var(--clr-violet);
 }
 
-.card_body_description {
-}
-
 .card_body_stats {
   font-family: var(--ff-stats);
   font-size: var(--fs-small);
   text-transform: uppercase;
   letter-spacing: 0.0625rem; /* 1px */
-  padding-top: 1.5rem;
+  padding-top: var(--spacing-l);
+  color: var(--clr-white-transp-m);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -121,11 +106,12 @@ body {
 .stats_span {
   color: var(--clr-white-main);
   font-family: var(--ff-main);
-  font-size: 1.5rem;
+  font-size: var(--fs-large);
   font-weight: var(--fw-bold);
   text-transform: none;
 }
 
+/* >= 900 px  */
 @media (min-width: 56.25rem) {
   .card {
     max-width: var(--card-max-width-desktop);
