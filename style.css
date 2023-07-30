@@ -43,7 +43,7 @@ body {
 }
 
 main {
-  padding-top: 2rem; /* adjusting the card centering */
+  padding-top: var(--spacing-xl); /* adjusting the card centering */
 }
 
 /* Card Styles */
