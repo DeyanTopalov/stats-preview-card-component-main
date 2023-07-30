@@ -98,9 +98,6 @@ body {
   justify-content: space-between;
   align-content: space-between;
   gap: var(--spacing-l);
-  @media (min-width: 500px) {
-    flex-direction: row;
-  }
 }
 
 .stats_span {
@@ -109,6 +106,13 @@ body {
   font-size: var(--fs-large);
   font-weight: var(--fw-bold);
   text-transform: none;
+}
+
+/* >= 500px */
+@media (min-width: 31.25rem) {
+  .card_body_stats {
+    flex-direction: row;
+  }
 }
 
 /* >= 900 px  */
