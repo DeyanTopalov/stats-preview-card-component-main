@@ -42,6 +42,10 @@ body {
   color: var(--clr-white-transp-s);
 }
 
+main {
+  padding-top: 1rem;
+}
+
 /* Card Styles */
 .card {
   max-width: var(--card-max-width-mobile);
@@ -117,6 +121,11 @@ body {
 
 /* >= 900 px  */
 @media (min-width: 56.25rem) {
+  body {
+    /* padding: 0; */
+    gap: 1rem;
+  }
+
   .card {
     max-width: var(--card-max-width-desktop);
     grid-template-columns: 1fr 0.9fr;
